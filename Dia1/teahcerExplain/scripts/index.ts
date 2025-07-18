@@ -1,0 +1,1 @@
+let nametoo:string = "Hola mundo";
