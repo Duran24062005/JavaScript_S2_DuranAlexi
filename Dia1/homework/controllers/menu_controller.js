@@ -3,7 +3,7 @@
 // con el objetivo de modularizarlo y que de está manera sea mucho más legible al igual que facil de modificar.
 // Archivo para modularizar y guardar como funciones las opciones del menu.
 
-function register_new_cost(){ 
+export function register_new_cost(){ 
     /*
         Esta funcion se encarga de mostrar la parte del menú para registra un nuevo gasto.
         No recibe parametros.
@@ -16,9 +16,9 @@ function register_new_cost(){
     console.log('=============================================');
     console.log('Ingrese la información del gasto: \n');
 
-    let monto = input('- Monto del gasto: ' );
-    let category = input('- Categoría (ej. comida, transporte, entretenimiento, otros): ');
-    let description = input('- Descripción (opcional): ');
+    let monto = prompt('- Monto del gasto: ' );
+    let category = prompt('- Categoría (ej. comida, transporte, entretenimiento, otros): ');
+    let description = prompt('- Descripción (opcional): ');
 
     let option_m = input("Ingrese ' S ' para guardar o ' C ' para cancelar: ");
     console.log('=============================================\n');
@@ -28,67 +28,69 @@ function register_new_cost(){
 
     if (option_m.lower() == 's') { 
         // Guardar el costo generado
-        let success = add_new_cost(category, description, monto)
+        let success = add_new_cost(category, description, monto);
         if (success) { 
-            console.log('¡¡Costo guardado exitosamente!!\n')
+            console.log('¡¡Costo guardado exitosamente!!\n');
         } else { 
-            console.log('No fue posible.')
+            console.log('No fue posible.');
         }
 
     } else if (option_m.lower() == 'c') { 
         // No guardar el costo generado
-        console.log('Costo no guardado!!\n')
+        console.log('Costo no guardado!!\n');
 
     } else { 
         console.log('¡Por favor, elija una opción valida!\n');
     }
 }
 
-/* def list_all_cost():
-    """
+function list_all_cost() { 
+    /*
         Esta funcion se encarga de mostrar la parte del menú para mostrar todos los gasto registrados en el sistema.
         No recibe parametros.
         Dependiendo de la opción entregado porel usuario retora o no retorna nada.
             1. Muestra por pantalla una lista de todos los gastos.
             2. Muestra por pantalla una lista de los gastos pertenecientes a una categoria.
             3. Muestra por pantalla una lista de los gastos filtrados por fechaa: año, mes o día.
-    """
+    */
     
-    print('=============================================')
-    print('                Listar Gastos                ')
-    print('=============================================')
-    print('Seleccione una opción para filtrar los gastos:')
+    console.log('=============================================');
+    console.log('                Listar Gastos                ');
+    console.log('=============================================');
+    console.log('Seleccione una opción para filtrar los gastos:');
 
-    print('1. Ver todos los gastos.')
-    print('2. Filtrar por categoría.')
-    print('3. Filtrar por rango de fechas.')
-    print('4. Regresar al menú principal.')
-    print('=============================================')
-    option_l = int(input('> '))
+    console.log('1. Ver todos los gastos.');
+    console.log('2. Filtrar por categoría.');
+    console.log('3. Filtrar por rango de fechas.');
+    console.log('4. Regresar al menú principal.');
+    console.log('=============================================');
+    let option_l = parseInt(prompt('> '));
 
-    if (option_l == 1):
-        """Ver todos los gastos actuales"""
+    if (option_l == 1) { 
+        // Ver todos los gastos actuales
         print('\nEstos son todos los gastos:\n')
-        if(list_costs()):
-            print(tabulate(list_costs(), headers='keys', tablefmt='rounded_grid'))
-        else:
-            print('No hay costos registrados')
+        if(list_costs()) {
+            console.log(tabulate(list_costs(), headers='keys', tablefmt='rounded_grid'));
+        } else {
+            console.log('No hay costos registrados');
+        }
 
-    elif (option_l == 2):
-        """filtro por categorias"""
-        print('\nPor favor mensione la categoria: ')
-        cate = input('> ')
+    } else if (option_l == 2) { 
+        // filtro por categorias
+        console.log('\nPor favor mensione la categoria: ');
+        let cate = prompt('> ');
         header = ["fecha", "categoria", "descripcion", "monto"]
-        if(filter_by_category(cate)):
+        if(filter_by_category(cate)) { 
             print(' ')
             print(tabulate(filter_by_category(cate), headers = "keys", tablefmt='rounded_grid'))
             print('\nFiltro por categoria exitoso.\n')
         
-        else:
+        } else { 
             print('No hay datos.\n')
+        }
 
-    elif (option_l == 3):
-        """filtro por rango de fechas"""
+    } else if (option_l == 3) { 
+        // filtro por rango de fechas
         print('\nEl formato es AA-MM-DD')
         desde = input('Desde: ')
         print('\nEl formato es AA-MM-DD')
@@ -106,12 +108,13 @@ function register_new_cost(){
         else:
             print('No hay datos.\n')
 
-    elif (option_l == 4):
+    } else if (option_l == 4) { 
         """Volver al menu principal"""
         print('\n')
         return True
-
-    
+    }
+}
+/*   
 def sum_all_cost():
     """
         Esta funcion se encarga  de mostrar el resultado de la suma de todos los gastos registrados en el sistema.
@@ -210,4 +213,4 @@ def finish_program():
         print('Por favor, elija una opción valida!!')
 
 
-# Desarrollado por Alexi Durán Gómez : C.C-1.067.031.983
+// Desarrollado por Alexi Durán Gómez : C.C-1.067.031.983*/

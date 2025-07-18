@@ -1,6 +1,6 @@
 // Proyecto_Python_DuranAlexi
 // Main, entrada del proyecto
-import menu_controller from './controllers/menu_controller';
+import {register_new_cost} from './controllers/menu_controller';
 
 // Hacer actualización en el archivo README.md y agregar un nuevo registro de documentación
 // Link: https://pypi.org/project/tabulate/
@@ -13,22 +13,23 @@ console.log("|======= Proyecto Python S2 Campuslands ======|")
 console.log("|=============================================|")
 console.log(" --------------------------------------------- \n \n")
 
-let program = True
+let program = true;
+
 while (program){
     // Menu progrogram
-    console.log('=============================================')
-    console.log('       Simulador de Gasto Diario             ')
-    console.log('=============================================')
-    console.log('Seleccione una opción: \n')
+    console.log('=============================================');
+    console.log('       Simulador de Gasto Diario             ');
+    console.log('=============================================');
+    console.log('Seleccione una opción: \n');
 
-    console.log('1. Registrar nuevo gasto')
-    console.log('2. Listar gastos')
-    console.log('3. Calcular el total de gastos')
-    console.log('4. Generar informe de gastos')
-    console.log('5. Salir\n')
-    console.log('=============================================')
-    let option = int(input('> '))
-    console.log('\n')
+    console.log('1. Registrar nuevo gasto');
+    console.log('2. Listar gastos');
+    console.log('3. Calcular el total de gastos');
+    console.log('4. Generar informe de gastos');
+    console.log('5. Salir\n');
+    console.log('=============================================');
+    let option = parseInt(prompt('> '));
+    console.log('\n');
 
     if (option == 1) { 
         // Registrar un nuevo costo
@@ -66,4 +67,5 @@ while (program){
         continue
     }
 }
+
 // Desarrollado por Alexi Durán Gómez : C.C-1.067.031.983
