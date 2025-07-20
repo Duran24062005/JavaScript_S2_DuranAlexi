@@ -1535,4 +1535,6 @@ const db_prueba = [
         "descripcion": "Salida con mis amigos de campus",
         "monto": 34000
     }
-]
+];
+
+export default db_prueba;

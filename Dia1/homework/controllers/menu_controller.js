@@ -2,6 +2,11 @@
 // Menu Controlador: El archivo controler o controlador es un archivo creado para aislar la logica de funcionamiento del programa 
 // con el objetivo de modularizarlo y que de está manera sea mucho más legible al igual que facil de modificar.
 // Archivo para modularizar y guardar como funciones las opciones del menu.
+import { 
+    add_new_cost, 
+    list_costs, 
+    filter_by_category 
+} from "../helpers/functionList.js";
 
 export function register_new_cost(){ 
     /*
@@ -20,13 +25,13 @@ export function register_new_cost(){
     let category = prompt('- Categoría (ej. comida, transporte, entretenimiento, otros): ');
     let description = prompt('- Descripción (opcional): ');
 
-    let option_m = input("Ingrese ' S ' para guardar o ' C ' para cancelar: ");
+    let option_m = prompt("Ingrese ' S ' para guardar o ' C ' para cancelar: ");
     console.log('=============================================\n');
     console.log(`El monto del gasto fue de ${monto}`);
     console.log(`El gasto pertenece a la categoria: ${category}`);
     console.log(`Descripción: ${description}. \n`);
 
-    if (option_m.lower() == 's') { 
+    if (option_m.toLocaleLowerCase() == 's') { 
         // Guardar el costo generado
         let success = add_new_cost(category, description, monto);
         if (success) { 
@@ -35,7 +40,7 @@ export function register_new_cost(){
             console.log('No fue posible.');
         }
 
-    } else if (option_m.lower() == 'c') { 
+    } else if (option_m.toLocaleLowerCase() == 'c') { 
         // No guardar el costo generado
         console.log('Costo no guardado!!\n');
 
@@ -44,7 +49,7 @@ export function register_new_cost(){
     }
 }
 
-function list_all_cost() { 
+export function list_all_cost() { 
     /*
         Esta funcion se encarga de mostrar la parte del menú para mostrar todos los gasto registrados en el sistema.
         No recibe parametros.
@@ -68,96 +73,95 @@ function list_all_cost() {
 
     if (option_l == 1) { 
         // Ver todos los gastos actuales
-        print('\nEstos son todos los gastos:\n')
+        console.log('\nEstos son todos los gastos:\n')
         if(list_costs()) {
-            console.log(tabulate(list_costs(), headers='keys', tablefmt='rounded_grid'));
+            console.table(list_costs());
         } else {
             console.log('No hay costos registrados');
         }
 
     } else if (option_l == 2) { 
         // filtro por categorias
-        console.log('\nPor favor mensione la categoria: ');
-        let cate = prompt('> ');
-        header = ["fecha", "categoria", "descripcion", "monto"]
-        if(filter_by_category(cate)) { 
-            print(' ')
-            print(tabulate(filter_by_category(cate), headers = "keys", tablefmt='rounded_grid'))
-            print('\nFiltro por categoria exitoso.\n')
+        let cate = prompt('Por favor mensione la categoria: > ');
+        if(filter_by_category(cate.toLocaleLowerCase())) {
+            console.table(filter_by_category(cate.toLocaleLowerCase()));
+            console.log('\nFiltro por categoria exitoso.\n');
         
         } else { 
-            print('No hay datos.\n')
+            console.log('No hay datos.\n');
         }
 
     } else if (option_l == 3) { 
         // filtro por rango de fechas
-        print('\nEl formato es AA-MM-DD')
-        desde = input('Desde: ')
-        print('\nEl formato es AA-MM-DD')
-        hasta = input('Hasta: ')
-        print('\nElije para filtrar:')
-        print('\t1. Por año.')
-        print('\t2. Por mes.')
-        print('\t3. Por día.')
-        by = int(input('> '))
-        ranges = filter_by_range_date(by, desde, hasta)
-        if ranges:
-            print(tabulate(ranges, headers='keys', tablefmt='rounded_grid'))
-            print('Filtro por rango de fehcas exitoso.')
+        console.log('\nEl formato es AA-MM-DD')
+        let desde = input('Desde: ');
+        console.log('\nEl formato es AA-MM-DD');
+        let hasta = input('Hasta: ');
+        console.log('\nElije para filtrar:');
+        console.log('\t1. Por año.');
+        console.log('\t2. Por mes.');
+        console.log('\t3. Por día.');
+        let by = parseInt(input('> '));
+        let ranges = filter_by_range_date(by, desde, hasta);
+        if (ranges) {
+            console.log(tabulate(ranges, headers='keys', tablefmt='rounded_grid'));
+            console.log('Filtro por rango de fehcas exitoso.');
 
-        else:
-            print('No hay datos.\n')
+        } else { 
+            console.log('No hay datos.\n');
+        };
 
     } else if (option_l == 4) { 
-        """Volver al menu principal"""
-        print('\n')
-        return True
-    }
-}
-/*   
-def sum_all_cost():
-    """
+        // Volver al menu principal
+        console.log('\n');
+        return true;
+    };
+};
+
+export function sum_all_cost(){ 
+    /*
         Esta funcion se encarga  de mostrar el resultado de la suma de todos los gastos registrados en el sistema.
         No resibe parametros.
         No tiene retorno.
         1. Calcula y muestra el total de gastos del día actual.
         2. Calcula y muestra el total de gastos de los últimos siete días.
         3. Calcula y muestra el total de gastos del último mes.
-    """
-    print('=============================================')
-    print('        Calcular el total de gastos          ')
-    print('=============================================')
-    print('Seleccione el período de cálculo:\n')
+    */
+    console.log('=============================================');
+    console.log('        Calcular el total de gastos          ');
+    console.log('=============================================');
+    console.log('Seleccione el período de cálculo:\n');
 
-    print('1. Calcular total diario.')
-    print('2. Calcular el total semanal.')
-    print('3. Calcular el total mensual.')
-    print('4. Regresar al menú principal.')
-    print('=============================================')
-    option_s = int(input('> '))
-    hoy = int(datetime.now().strftime('%d'))
+    console.log('1. Calcular total diario.');
+    console.log('2. Calcular el total semanal.');
+    console.log('3. Calcular el total mensual.');
+    console.log('4. Regresar al menú principal.');
+    console.log('=============================================');
+    let option_s = parseInt(prompt('> '));
+    let hoy = int(datetime.now().strftime('%d'));
 
-    if (option_s == 1):
-        """Calcula y muestra el total de gastos del día actual."""
-        mes = int(datetime.now().strftime('%m'))
-        print(f'\nGasto total del del dia de hoy {hoy} del mes {mes}: {total_cost(option_s, hoy)}')
+    if (option_s == 1) {
+        // Calcula y muestra el total de gastos del día actual."""
+        let mes = int(datetime.now().strftime('%m'));
+        console.log(`\nGasto total del del dia de hoy ${hoy} del mes ${mes}: ${total_cost(option_s, hoy)}`);
 
-    elif (option_s == 2):
-        """Calcula y muestra el total de gastos de los últimos siete días."""
-        print(total_cost(option_s, hoy))
+    } else if (option_s == 2) { 
+        // Calcula y muestra el total de gastos de los últimos siete días."""
+        console.log(total_cost(option_s, hoy));
 
-    elif (option_s == 3):
-        """Calcula y muestra el total de gastos del último mes."""
-        print(total_cost(option_s, hoy))
+    } else if (option_s == 3) { 
+        // Calcula y muestra el total de gastos del último mes."""
+        console.log(total_cost(option_s, hoy));
 
-    elif (option_s == 4):
-        """Volver al menú de incio."""
-        print('\n')
-        return True
+    } else if (option_s == 4) { 
+        // Volver al menú de incio."""
+        console.log('\n');
+        return true;
+    }
+}
 
-
-def generate_cost_report():
-    """
+export function generate_cost_report() { 
+    /*
         Esta funcion se encarga mostrar la parte del menú para mostrar el screen para generar un informe de gastos.
         No recibe parametros.
         No tiene retorno.
@@ -165,52 +169,55 @@ def generate_cost_report():
             1. Calcula y muestra el total de gastos del día actual.
             2. Calcula y muestra el total de gastos de los últimos siete días.
             3. Calcula y muestra el total de gastos del último mes.
-    """
-    print('=============================================')
-    print('         Generar Informe de Gastos           ')
-    print('=============================================')
-    print('Seleccione el tipo de informe:\n')
+    */
+    console.log('=============================================');
+    console.log('         Generar Informe de Gastos           ');
+    console.log('=============================================');
+    console.log('Seleccione el tipo de informe:\n');
 
-    print('1. Reporte diario')
-    print('2. Informe semanal')
-    print('3. Informe mensual')
-    print('4. Regresar al menú principal')
-    print('=============================================')
-    option_p = int(input('> '))
+    console.log('1. Reporte diario');
+    console.log('2. Informe semanal');
+    console.log('3. Informe mensual');
+    console.log('4. Regresar al menú principal');
+    console.log('=============================================');
+    option_p = parseInt(prompt('> '))
 
-    if (option_p == 1):
-        print(cost_report(option_p))
+    if (option_p == 1) { 
+        console.log(cost_report(option_p));
 
-    elif (option_p == 2):
-        print(cost_report(option_p))
+    } else if (option_p == 2) { 
+        console.log(cost_report(option_p));
 
-    elif (option_p == 3):
-        print(cost_report(option_p))
+    } else if (option_p == 3) { 
+        console.log(cost_report(option_p));
 
-    elif (option_p == 4):
-        print('\n')
-        return True
+    } else if (option_p == 4) { 
+        console.log('\n');
+        return true;
+    } 
+}se 
 
+export function finish_program() {
 
-def finish_program():
-    /*
+     /*
         Esta función permite terminar le programa.
         No recibe parametros.
         No retorna nada.
         Detiene el programa.
-    """
-    dato = input('\n¿Quieres salir del programa ? (S/N): ')
+    */
+    let dato = prompt('\n¿Quieres salir del programa ? (S/N): ');
 
-    if (dato.lower() == 's'):
-        print('\nGracias por utilizar el software. Bye!!')
-        return False
+    if (dato.toLocaleLowerCase() == 's') { 
+        console.log('\nGracias por utilizar el software. Bye!!');
+        return false;
 
-    elif (dato.lower() == 'n'):
-        print('\nEsta bien!!\n')
-        return True
+    } else if (dato.toLocaleLowerCase() == 'n') { 
+        console.log('\nEsta bien!!\n');
+        return true;
             
-    else:
-        print('Por favor, elija una opción valida!!')
+    } else { 
+        console.log('Por favor, elija una opción valida!!');
+    }
+}
 
-
-// Desarrollado por Alexi Durán Gómez : C.C-1.067.031.983*/
+// Desarrollado por Alexi Durán Gómez : C.C-1.067.031.983

@@ -1,6 +1,12 @@
 // Proyecto_Python_DuranAlexi
 // Main, entrada del proyecto
-import {register_new_cost} from './controllers/menu_controller';
+import { 
+    register_new_cost, 
+    list_all_cost, 
+    sum_all_cost,
+    generate_cost_report,
+    finish_program
+} from './controllers/menu_controller.js';
 
 // Hacer actualización en el archivo README.md y agregar un nuevo registro de documentación
 // Link: https://pypi.org/project/tabulate/
@@ -15,7 +21,7 @@ console.log(" --------------------------------------------- \n \n")
 
 let program = true;
 
-while (program){
+while (program == true){
     // Menu progrogram
     console.log('=============================================');
     console.log('       Simulador de Gasto Diario             ');
@@ -33,32 +39,36 @@ while (program){
 
     if (option == 1) { 
         // Registrar un nuevo costo
-        register_new_cost()
-        continue 
+        register_new_cost();
+        continue ;
         // La sentencia *continue* se utiliza omitir esta iteración e iniciar de nuevo en otra iteración.
         // Permitiendo así que se controle mejor el flujo y evite que en cierto caso se 
         // termine ejecutando hasta el else, devolviendo por pantalla lo programado.
 
     } else if (option == 2) {
         // Ver la lista de todos los costos
-        list_all_cost()
-        continue
+        list_all_cost();
+        continue;
 
     } else if (option == 3) { 
         // Ver la suma del valor de todos los costos
-        sum_all_cost()
-        continue
+        sum_all_cost();
+        continue;
 
     } else if (option == 4){ 
         // Generar un reporte con los costos
-        generate_cost_report()
-        continue
+        generate_cost_report();
+        continue;
 
 
     } else if (option == 5){
         // Terminar la ejecución del programa
-        program = finish_program()
-        break
+        let program = finish_program();
+        if (!program) {
+            break;
+        } else {
+            continue;
+        };
         // La sentencia *break* finaliza el ciclo al ser llamada.
               
     } else {
