@@ -33,7 +33,7 @@ export const findIngredient = () => {
         default:
             alert(`Por favor ingresa una opción valida.`);
             break;
-    }
+    };
 };
 
 export const createIngredient = () => {
@@ -57,9 +57,9 @@ export const createIngredient = () => {
         "stock": parseInt(stock)
     };
 
-    let already_exist = ingredients.find(ingredient  => ingredient.nombre.toLocaleLowerCase() == nameIng.toLocaleLowerCase());
+    let already_exist = ingredients.find(ingredient  => ingredient.nombre.toLocaleLowerCase() === nameIng.toLocaleLowerCase());
 
-    if (!already_exist) {
+    if (!already_exist == undefined) {
         alert(`El ingrediente ${nameIng} ya esxiste`);
     } else {
         let success = ingredients.push(newProduct);
@@ -74,12 +74,38 @@ export const createIngredient = () => {
 
 export const readIngredient = () => {
     /* READ ALL INGREDIENTS */
+    console.table(ingredients);
     alert(JSON.stringify(ingredients, null, 2));
     
 };
 
 export const updateIngredient = () => {
-    
+    /* UDATE INGREDIENT */
+    let id = prompt(`Ingrese el id del elementos`);
+    let ingredientes = ingredients.findIndex(  ingredient => ingredient.id == id );
+    if (!ingredientes == undefined) {
+        alert(`El ingrediente con ID ${id} no esxiste`);
+    } else {
+        let nameIng = prompt('Por favor, ingrese el nombre: ');
+        let description = prompt('Por favor, ingrese la descripción: ');
+        let price = prompt('Por favor, ingrese el precio: ');
+        let stock = prompt('Por favor, ingrese el stock: ');
+
+        let updated = {
+            "id": createId(1),
+            "nombre": nameIng,
+            "descripcion": description,
+            "precio": parseFloat(price),
+            "stock": parseInt(stock)
+        };
+        ingredients[id].nombre = nameIng;
+        ingredients[id].descripcion = description;
+        ingredients[id].precio = parseFloat(price);
+        ingredients[id].nombre = parseInt(stock);
+
+        alert(JSON.stringify(ingredients[ingredientes], null, 2));
+        alert(JSON.stringify(ingredients, null, 2));
+    };
 };
 
 export const deleteIngredient = () => {
