@@ -1,0 +1,62 @@
+// Ingredients Services File
+import { ingredients } from "../db/hamburguer_db.js";
+
+export const findIngredient = (name) => {
+
+    let success = ingredients.push(newProduct);
+
+    if (!success) {
+        alert(`No fue posibole agregar el ingrediente ${nameIng}`);
+    } else {
+        alert(`El ingrediente ${nameIng} fue agregado exitosamente.`);
+    };
+};
+
+export const createIngredient = () => {
+    /* CREATE INGREDIENT */
+    alert(`
+    ================================================
+    === Bienvenido a La cafetería de Campuslands ===
+    ================================================
+      Estas en el apartado de agregar un ingrediente
+    =================================================`)
+    let nameIng = prompt('Por favor, ingrese el nombre: ');
+    let description = prompt('Por favor, ingrese la descripción: ');
+    let price = prompt('Por favor, ingrese el precio: ');
+    let stock = prompt('Por favor, ingrese el stock: ');
+
+    let newProduct = {
+        "nombre": nameIng,
+        "descripcion": description,
+        "precio": parseFloat(price),
+        "stock": parseInt(stock)
+    };
+
+    let already_exist = ingredients.find(ingredient  => ingredient.nombre.toLocaleLowerCase() == nameIng.toLocaleLowerCase());
+
+    if (!already_exist) {
+        alert(`El ingrediente ${nameIng} ya esxiste`);
+    } else {
+        let success = ingredients.push(newProduct);
+    
+        if (!success) {
+            alert(`No fue posibole agregar el ingrediente ${nameIng}`);
+        } else {
+            alert(`El ingrediente ${nameIng} fue agregado exitosamente.`);
+        };
+    };
+};
+
+export const readIngredient = () => {
+    
+};
+
+export const updateIngredient = () => {
+    
+};
+
+export const deleteIngredient = () => {
+    
+};
+
+// Developed by Alexi Duran C.c: 1.067.031.983
