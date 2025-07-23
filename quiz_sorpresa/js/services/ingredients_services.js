@@ -1,15 +1,39 @@
 // Ingredients Services File
 import { ingredients } from "../db/hamburguer_db.js";
+import createId from "../helpers/create_id.js";
 
-export const findIngredient = (name) => {
+export const findIngredient = () => {
 
-    let success = ingredients.push(newProduct);
+    let searchBy = prompt(`
+    Por favor, ingrese 'n' para filtrar por nombre
+    o 'i' para filtrar por ID: 
+    `);
 
-    if (!success) {
-        alert(`No fue posibole agregar el ingrediente ${nameIng}`);
-    } else {
-        alert(`El ingrediente ${nameIng} fue agregado exitosamente.`);
-    };
+    switch (searchBy.toLocaleLowerCase()) {
+        case 'n':
+            let nombre  = prompt('Ingrese el nombre: ');
+            let exist = ingredients.filter( ingredient => ingredient.nombre.toLocaleLowerCase() == nombre.toLocaleLowerCase());
+            if (!exist) {
+                alert(`El ingrediente ${nombre} no existe.`);
+            } else {
+                alert(`Ingrediente: ${JSON.stringify(exist, null, 2)}`)
+            }
+            break;
+
+        case 'i':
+            let ID  = prompt('Ingrese el ID: ');
+            let exist_id = ingredients.find( ingredient => ingredient.id == parseInt(ID));
+            if (!exist_id) {
+                alert(`El ingrediente ${nombre} no existe.`);
+            } else {
+                alert(`Ingrediente: ${JSON.stringify(exist, null, 2)}`)
+            }
+            break;
+    
+        default:
+            alert(`Por favor ingresa una opción valida.`);
+            break;
+    }
 };
 
 export const createIngredient = () => {
@@ -26,6 +50,7 @@ export const createIngredient = () => {
     let stock = prompt('Por favor, ingrese el stock: ');
 
     let newProduct = {
+        "id": createId(1),
         "nombre": nameIng,
         "descripcion": description,
         "precio": parseFloat(price),

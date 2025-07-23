@@ -1,17 +1,20 @@
 export const ingredients = [
     {
+        "id": 1,
         "nombre": "Pan",
         "descripcion": "Pan de hamburguesa clásico",
         "precio": 2.5,
         "stock": 500
     },
     {
+        "id": 2,
         "nombre": "Carne de res",
         "descripcion": "Carne de res jugosa y sabrosa",
         "precio": 8,
         "stock": 300
     },
     {
+        "id": 3,
         "nombre": "Queso cheddar",
         "descripcion": "Queso cheddar derretido",
         "precio": 1.5,
