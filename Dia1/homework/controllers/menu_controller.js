@@ -195,7 +195,7 @@ export function generate_cost_report() {
         console.log('\n');
         return true;
     } 
-}se 
+};
 
 export function finish_program() {
 
@@ -205,7 +205,7 @@ export function finish_program() {
         No retorna nada.
         Detiene el programa.
     */
-    let dato = prompt('\n¿Quieres salir del programa ? (S/N): ');
+    let dato = prompt('\n¿Quieres salir del programa ? (S/N): ').toLocaleLowerCase();
 
     if (dato.toLocaleLowerCase() == 's') { 
         console.log('\nGracias por utilizar el software. Bye!!');

@@ -11,29 +11,30 @@ import {
 // Hacer actualización en el archivo README.md y agregar un nuevo registro de documentación
 // Link: https://pypi.org/project/tabulate/
     /*Esta es la entrada principal del programa.*/
-console.log(" _____________________________________________")
-console.log("|=============================================|")
-console.log("|========= Welcome to my Software ============|")
-console.log("|=============== By Alexi Dg =================|")
-console.log("|======= Proyecto Python S2 Campuslands ======|")
-console.log("|=============================================|")
-console.log(" --------------------------------------------- \n \n")
+alert(` 
+_____________________________________________
+|=============================================|
+|========= Welcome to my Software ============|
+|=============== By Alexi Dg =================|
+|======= Proyecto Python S2 Campuslands ======|
+|=============================================|
+ --------------------------------------------- \n \n`);
 
-let program = true;
+var program = true;
 
 while (program == true){
     // Menu progrogram
-    console.log('=============================================');
-    console.log('       Simulador de Gasto Diario             ');
-    console.log('=============================================');
-    console.log('Seleccione una opción: \n');
-
-    console.log('1. Registrar nuevo gasto');
-    console.log('2. Listar gastos');
-    console.log('3. Calcular el total de gastos');
-    console.log('4. Generar informe de gastos');
-    console.log('5. Salir\n');
-    console.log('=============================================');
+    alert(`
+    =============================================');
+           Simulador de Gasto Diario             
+    =============================================
+    Seleccione una opción: \n
+    1. Registrar nuevo gasto
+    2. Listar gastos
+    3. Calcular el total de gastos
+    4. Generar informe de gastos
+    5. Salir\n
+    =============================================`);
     let option = parseInt(prompt('> '));
     console.log('\n');
 
@@ -63,12 +64,8 @@ while (program == true){
 
     } else if (option == 5){
         // Terminar la ejecución del programa
-        let program = finish_program();
-        if (!program) {
-            break;
-        } else {
-            continue;
-        };
+        program = finish_program();
+        break;
         // La sentencia *break* finaliza el ciclo al ser llamada.
               
     } else {
