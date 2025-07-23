@@ -26,7 +26,7 @@ export const findIngredient = () => {
             if (!exist_id) {
                 alert(`El ingrediente ${nombre} no existe.`);
             } else {
-                alert(`Ingrediente: ${JSON.stringify(exist, null, 2)}`)
+                alert(`Ingrediente: ${JSON.stringify(exist_id, null, 2)}`)
             }
             break;
     
@@ -73,6 +73,8 @@ export const createIngredient = () => {
 };
 
 export const readIngredient = () => {
+    /* READ ALL INGREDIENTS */
+    alert(JSON.stringify(ingredients, null, 2));
     
 };
 

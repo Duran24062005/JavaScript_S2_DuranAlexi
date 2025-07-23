@@ -1,4 +1,4 @@
-import { ingredients, chefs, burguers } from "../db/hamburguer_db";
+import { ingredients, chefs, burguers } from "../db/hamburguer_db.js";
 
 export default function createId(data) {
     switch (data) {
