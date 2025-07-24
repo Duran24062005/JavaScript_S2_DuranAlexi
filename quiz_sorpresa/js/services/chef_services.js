@@ -38,6 +38,35 @@ export const findChef = () => {
 
 export const createChef = () => {
     // CREATE NEW CHEF
+    alert(`
+        ================================================
+        === Bienvenido a La cafetería de Campuslands ===
+        ================================================
+            Estas en el apartado de agregar un Chef
+        =================================================`)
+        let nombre = prompt('Por favor, ingrese el nombre: ');
+        let especialidad = prompt('Por favor, ingrese la especialidad: ');
+    
+        let newChef = {
+            "id": createId(2),
+            "nombre": nombre,
+            "especialidad": especialidad
+        };
+    
+        let alreadyExist = chefs.find(chef  => chef.nombre.toLocaleLowerCase() === nombre.toLocaleLowerCase());
+    
+        if (alreadyExist !== undefined) {
+            alert(`El ingrediente ${nombre} ya esxiste`);
+        } else {
+            let success = chefs.push(newChef);
+        
+            if (!success) {
+                alert(`No fue posibole agregar el chef ${nombre}`);
+            } else {
+                alert(`El chef ${nombre} fue agregado exitosamente.`);
+                alert(JSON.stringify(newChef, null, 2));
+            };
+        };
 };
 
 export const readChef = () => {

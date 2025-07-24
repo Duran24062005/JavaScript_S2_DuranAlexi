@@ -6,7 +6,7 @@ export default function createId(data) {
             if (ingredients) { 
                 return ingredients[ingredients.length - 1].id + 1;
             } else { 
-                return null;
+                return 1;
             }
             break;
 
@@ -14,7 +14,7 @@ export default function createId(data) {
             if (chefs) { 
                 return chefs[chefs.length - 1].id + 1;
             } else { 
-                return null;
+                return 1;
             }
             break;
 
@@ -22,7 +22,7 @@ export default function createId(data) {
             if (burguers) { 
                 return burguers[burguers.length - 1].id + 1;
             } else { 
-                return null;
+                return 1;
             }
             break;
 
