@@ -77,7 +77,7 @@ export const readChef = () => {
 
 export const updateChef = () => {
     // UPDATE CHEF
-    let id = prompt(`Ingrese el id del elementos`);
+    let id = prompt(`Ingrese el id del chef`);
     let chfs = chefs.findIndex(  chef => chef.id == id );
     if (!chfs == undefined) {
         alert(`El ingrediente con ID ${id} no esxiste:`);
@@ -95,5 +95,21 @@ export const updateChef = () => {
 
 export const deleteChef = () => {
     // DELETE CHEF
+    let id = prompt(`Ingrese el id del chef`);
+    
+    let index = chefs.findIndex(chef => chef.id == id);
+    
+    if (index === -1) {
+        alert(`El chef con ID ${id} no existe`);
+    } else {
+        let deleted = chefs.splice(index, 1); // splice devuelve array con el elemento eliminado
+        
+        if (deleted.length === 0) {
+            alert(`El chef ${id} no pudo ser eliminado`);
+        } else {
+            alert(`Chef eliminado: ${JSON.stringify(deleted[0], null, 2)}`);
+            alert(`Lista de Chefs actualizada: ${JSON.stringify(chefs, null, 2)}`);
+        };
+    };
 };
 // Developed by Alexi Duran C.c: 1.067.031.983
