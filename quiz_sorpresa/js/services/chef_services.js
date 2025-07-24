@@ -24,7 +24,7 @@ export const findChef = () => {
                 let ID  = prompt('Ingrese el ID: ');
                 let exist_id = chefs.find( chef => chef.id == parseInt(ID));
                 if (!exist_id) {
-                    alert(`El ingrediente ${nombre} no existe.`);
+                    alert(`El ingrediente ${ID} no existe.`);
                 } else {
                     alert(`Ingrediente: ${JSON.stringify(exist_id, null, 2)}`)
                 }
