@@ -25,14 +25,17 @@ export const ingredients = [
 
 export const categories = [
     {
+        "id": 1,
         "nombre": "Clásica",
         "descripcion": "Hamburguesas clásicas y sabrosas"
     },
     {
+        "id": 2,
         "nombre": "Vegetariana",
         "descripcion": "Hamburguesas sin carne, perfectas para vegetarianos"
     },
     {
+        "id": 3,
         "nombre": "Gourmet",
         "descripcion": "Hamburguesas gourmet con ingredientes premium"
     }
@@ -40,6 +43,7 @@ export const categories = [
 
 export const burguers = [
     {
+        "id": 1,
         "nombre": "Clásica",
         "categoria": "Clásica",
         "ingredientes": ["Pan", "Carne de res", "Queso cheddar", "Lechuga", "Tomate", "Cebolla", "Mayonesa", "Ketchup"],
@@ -47,6 +51,7 @@ export const burguers = [
         "chef": "ChefA"
     },
     {
+        "id": 2,
         "nombre": "Vegetariana",
         "categoria": "Vegetariana",
         "ingredientes": ["Pan integral", "Hamburguesa de lentejas", "Queso suizo", "Espinacas", "Cebolla morada", "Aguacate", "Mayonesa vegana"],
@@ -54,6 +59,7 @@ export const burguers = [
         "chef": "ChefB"
     },
     {
+        "id": 3,
         "nombre": "Doble Carne",
         "categoria": "Gourmet",
         "ingredientes": ["Pan de sésamo", "Doble carne de res", "Queso cheddar", "Bacon", "Lechuga", "Cebolla caramelizada", "Salsa BBQ"],
@@ -64,14 +70,17 @@ export const burguers = [
 
 export const chefs = [
     {
+        "id": 1,
         "nombre": "ChefA",
         "especialidad": "Carnes"
     },
     {
+        "id": 2,
         "nombre": "ChefB",
         "especialidad": "Cocina Vegetariana"
     },
     {
+        "id": 3,
         "nombre": "ChefC",
         "especialidad": "Gourmet"
     }
