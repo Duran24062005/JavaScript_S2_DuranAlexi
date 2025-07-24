@@ -77,6 +77,20 @@ export const readChef = () => {
 
 export const updateChef = () => {
     // UPDATE CHEF
+    let id = prompt(`Ingrese el id del elementos`);
+    let chfs = chefs.findIndex(  chef => chef.id == id );
+    if (!chfs == undefined) {
+        alert(`El ingrediente con ID ${id} no esxiste:`);
+    } else {
+        let nombre = prompt('Por favor, ingrese el nombre: ');
+        let especialidad = prompt('Por favor, ingrese la especialidad: ');
+    
+        chefs[id].nombre = nombre;
+        chefs[id].especialidad = especialidad;
+    
+        alert(JSON.stringify(chefs[chfs], null, 2));
+        alert(JSON.stringify(chefs, null, 2));
+    };
 };
 
 export const deleteChef = () => {
