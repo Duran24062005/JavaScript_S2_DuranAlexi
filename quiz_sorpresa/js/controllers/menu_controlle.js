@@ -15,9 +15,9 @@ import {
 
 export function CRUDIngredients() {
 
-        let ingredientCRUD = true;
-        while (ingredientCRUD) {
-            let userInput = prompt(`
+    let ingredientCRUD = true;
+    while (ingredientCRUD) {
+        let userInput = prompt(`
 =============================================
 == Bienvenido a La cafetería de Campuslands =
 =============================================
@@ -26,7 +26,7 @@ export function CRUDIngredients() {
         2. Ver todos los ingredientes.
         3. Ver un solo ingrediente.
         4. Actualizar ingrediente.
-        5. Eliminaringrediente.
+        5. Eliminar ingrediente.
         6. Salir
 ==============================================`);
         switch (userInput) {
@@ -66,17 +66,17 @@ export function CRUDIngredients() {
 export function CRUDChefs() {
 
     let chefCRUD = true;
-        while (chefCRUD) {
-            let userInput = prompt(`
+    while (chefCRUD) {
+        let userInput = prompt(`
 =============================================
 == Bienvenido a La cafetería de Campuslands =
 =============================================
     Elige una opción para continuar:
-        1. Agregar un nuevo Igrediente.
-        2. Ver todos los ingredientes.
-        3. Ver un solo ingrediente.
-        4. Actualizar ingrediente.
-        5. Eliminaringrediente.
+        1. Agregar un nuevo Chef.
+        2. Ver todos los Chefs.
+        3. Ver un solo Chef.
+        4. Actualizar Chef.
+        5. Eliminar Chef.
         6. Salir
 ==============================================`);
         switch (userInput) {
@@ -114,5 +114,50 @@ export function CRUDChefs() {
 }
 
 export function CRUDHamburgers() {
+    let burguerCRUD = true;
+    while (burguerCRUD) {
+        let userInput = prompt(`
+=============================================
+== Bienvenido a La cafetería de Campuslands =
+=============================================
+    Elige una opción para continuar:
+        1. Agregar un nuevo Chef.
+        2. Ver todos los Chefs.
+        3. Ver un solo Chef.
+        4. Actualizar Chef.
+        5. Eliminar Chef.
+        6. Salir
+==============================================`);
+        switch (userInput) {
+            case '1':
+                createChef();
+                break;
+    
+            case '2':
+                readChef();
+                break;
+            
+            case '3':
+                findChef();
+                break;
+    
+            case '4':
+                updateChef();
+                break;
+    
+            case '5':
+                deleteChef();
+                break;
+    
+            case '6':
+                alert('Saliendo');
+                burguerCRUD = false;
+                break;
+            
+            default:
+                alert(`Por favor ingresa una opción valida.`);
+                break;
+        }
+    };
     
 }
