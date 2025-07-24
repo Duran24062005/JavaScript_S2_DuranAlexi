@@ -1,5 +1,10 @@
 // CRUD - Simple e JavaScript
-import { CRUDIngredients } from "./controllers/menu_controlle.js";
+import { 
+    CRUDIngredients,
+    CRUDChefs,
+    CRUDHamburgers
+} from "./controllers/menu_controlle.js";
+import { consultController } from "./controllers/consultas_controller.js";
 
 function main() {
     /* 
@@ -30,15 +35,15 @@ function main() {
                 break;
 
             case '2':
-                readProduct();
+                CRUDChefs();
                 break;
 
             case '3':
-                updateProduct();
+                CRUDHamburgers();
                 break;
 
             case '4':
-                deleteProduct();
+                consultController();
                 break;
 
             case '5':
