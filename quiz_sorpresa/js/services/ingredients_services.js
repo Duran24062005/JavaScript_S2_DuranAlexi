@@ -84,20 +84,13 @@ export const updateIngredient = () => {
     let id = prompt(`Ingrese el id del elementos`);
     let ingredientes = ingredients.findIndex(  ingredient => ingredient.id == id );
     if (!ingredientes == undefined) {
-        alert(`El ingrediente con ID ${id} no esxiste`);
+        alert(`El ingrediente con ID ${id} no esxiste:`);
     } else {
         let nameIng = prompt('Por favor, ingrese el nombre: ');
         let description = prompt('Por favor, ingrese la descripción: ');
         let price = prompt('Por favor, ingrese el precio: ');
         let stock = prompt('Por favor, ingrese el stock: ');
 
-        let updated = {
-            "id": createId(1),
-            "nombre": nameIng,
-            "descripcion": description,
-            "precio": parseFloat(price),
-            "stock": parseInt(stock)
-        };
         ingredients[id].nombre = nameIng;
         ingredients[id].descripcion = description;
         ingredients[id].precio = parseFloat(price);
@@ -109,7 +102,25 @@ export const updateIngredient = () => {
 };
 
 export const deleteIngredient = () => {
-    
+    /* DELETE INGREDIENT BY ID */
+
+  let id = prompt(`Ingrese el id del elemento`);
+
+  let index = ingredients.findIndex(ingredient => ingredient.id == id);
+
+  if (index === -1) {
+    alert(`El ingrediente con ID ${id} no existe`);
+  } else {
+    let deleted = ingredients.splice(index, 1); // splice devuelve array con el elemento eliminado
+
+    if (deleted.length === 0) {
+      alert(`El elemento ${id} no pudo ser eliminado`);
+    } else {
+      alert(`Elemento eliminado: ${JSON.stringify(deleted[0], null, 2)}`);
+      alert(`Lista actualizada: ${JSON.stringify(ingredients, null, 2)}`);
+    }
+  }
 };
+
 
 // Developed by Alexi Duran C.c: 1.067.031.983
