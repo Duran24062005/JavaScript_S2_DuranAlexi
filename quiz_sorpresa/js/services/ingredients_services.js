@@ -83,7 +83,7 @@ export const updateIngredient = () => {
     /* UDATE INGREDIENT */
     let id = prompt(`Ingrese el id del elementos`);
     let ingredientes = ingredients.findIndex(  ingredient => ingredient.id == id );
-    if (!ingredientes == undefined) {
+    if (ingredientes !== undefined) {
         alert(`El ingrediente con ID ${id} no esxiste:`);
     } else {
         let nameIng = prompt('Por favor, ingrese el nombre: ');
