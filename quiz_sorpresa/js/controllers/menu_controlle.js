@@ -5,6 +5,13 @@ import {
     updateIngredient,
     deleteIngredient
 } from "../services/ingredients_services.js";
+import { 
+    createChef,
+    readChef,
+    findChef,
+    updateChef,
+    deleteChef
+} from "../services/chef_services.js";
 
 export function CRUDIngredients() {
 
