@@ -59,7 +59,7 @@ export const createIngredient = () => {
 
     let already_exist = ingredients.find(ingredient  => ingredient.nombre.toLocaleLowerCase() === nameIng.toLocaleLowerCase());
 
-    if (!already_exist == undefined) {
+    if (already_exist !== undefined) {
         alert(`El ingrediente ${nameIng} ya esxiste`);
     } else {
         let success = ingredients.push(newProduct);
