@@ -12,6 +12,13 @@ import {
     updateChef,
     deleteChef
 } from "../services/chef_services.js";
+import { 
+    createBurguer,
+    readBurguer,
+    findBurguer,
+    updateBurguer,
+    deleteBurguer
+} from "../services/burguer_services.js";
 
 export function CRUDIngredients() {
 
@@ -121,32 +128,32 @@ export function CRUDHamburgers() {
 == Bienvenido a La cafetería de Campuslands =
 =============================================
     Elige una opción para continuar:
-        1. Agregar un nuevo Chef.
-        2. Ver todos los Chefs.
-        3. Ver un solo Chef.
-        4. Actualizar Chef.
-        5. Eliminar Chef.
+        1. Agregar una nueva Hamburguesa.
+        2. Ver todas las Hamburguesa.
+        3. Ver una sola Hamburguesa.
+        4. Actualizar Hamburguesa.
+        5. Eliminar Hamburguesa.
         6. Salir
 ==============================================`);
         switch (userInput) {
             case '1':
-                createChef();
+                createBurguer();
                 break;
     
             case '2':
-                readChef();
+                readBurguer();
                 break;
             
             case '3':
-                findChef();
+                findBurguer();
                 break;
     
             case '4':
-                updateChef();
+                updateBurguer();
                 break;
     
             case '5':
-                deleteChef();
+                deleteBurguer();
                 break;
     
             case '6':
