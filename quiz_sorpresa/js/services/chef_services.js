@@ -71,8 +71,8 @@ export const createChef = () => {
 
 export const readChef = () => {
     // READE CHEFS
-    console.table(ingredients);
-    alert(JSON.stringify(ingredients, null, 2));
+    console.table(chefs);
+    alert(JSON.stringify(chefs, null, 2));
 };
 
 export const updateChef = () => {
