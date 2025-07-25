@@ -52,7 +52,7 @@ export const createBurguer = () => {
     let chef = prompt('Ingrese el nombre del chef: ');
 
     let newBurguer = {
-        "id": createId(2),
+        "id": createId(3),
         "nombre": nombre,
         "categoria": categoria,
         "ingredientes": ingredientes,
