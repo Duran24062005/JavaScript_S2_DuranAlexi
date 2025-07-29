@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2vw;
+}
+
+h1 {
+    margin: 0 auto;
+    background: linear-gradient(yellow, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.personajes {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}

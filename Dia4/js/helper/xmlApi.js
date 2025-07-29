@@ -1,25 +1,22 @@
-let xhr = new XMLHttpRequest();
-xhr.open('GET', "https://rickandmortyapi.com/api/character");
+export function getCharacters(page) {
+  const xhr = new XMLHttpRequest();
+  const url = `https://rickandmortyapi.com/api/character/?page=${page}`; // Reemplaza con la URL de tu API
 
-xhr.send();
+  xhr.open('GET', url);
 
-xhr.onload = function () {
-    if (xhr.status != 200) {
-        alert(`Error ${xhr.status}: ${xhr.statusText}`);
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      const data = JSON.parse(xhr.responseText);
+      console.log(data);
+      // Procesa la respuesta aquí
     } else {
-        
+      console.error('Error en la solicitud:', xhr.status, xhr.statusText);
     }
-}
-
-xhr.onprogress = function(event) {
-    if (event.lengthComputable) {
-      alert(`Received ${event.loaded} of ${event.total} bytes`);
-    } else {
-      alert(`Received ${event.loaded} bytes`); // no Content-Length
-    }
-  
   };
-  
+
   xhr.onerror = function() {
-    alert("Request failed");
+    console.error('Error de red al realizar la solicitud.');
   };
+
+  xhr.send();
+}
