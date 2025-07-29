@@ -1,5 +1,3 @@
-const btnBack = document.getElementById('back');
-const btnNext = document.getElementById('next');
 let paginaActual = 1;
 
 function loadCharacters(pagina) {
@@ -32,12 +30,14 @@ function loadCharacters(pagina) {
             `;
             contenedor.appendChild(div);
           }
-          // Controlar botones
-            document.getElementById("back").disabled = !info.prev;
-            document.getElementById("next").disabled = !info.next;
         } else {
           console.error("Error al cargar la API", xhr.status);
         }
+        const btnBack = document.getElementById('back');
+        const btnNext = document.getElementById('next');
+        // Controlar botones
+          document.getElementById("back").disabled = !info.prev;
+          document.getElementById("next").disabled = !info.next;
       }
     };
     
