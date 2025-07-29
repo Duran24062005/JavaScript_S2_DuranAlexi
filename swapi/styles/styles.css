@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 0 auto;
+    background: linear-gradient(black, gray);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 2vh;
+    height: 2rem;
+    padding-left: 2rem;
+}
+
+input:focus {
+    border: 1px solid gray;
+    border-color: aliceblue;
+}
+
+.grid-box {
+    background-color: rgb(26, 23, 23);
+    border-radius: 2vh;
+}
