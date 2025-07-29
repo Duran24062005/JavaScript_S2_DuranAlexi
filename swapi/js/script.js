@@ -7,9 +7,27 @@ function showPeoples() {
         try {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 const data = JSON.parse(xhr.responseText);
-                alert(data.results[0].name);
+                console.log(data.results);
+                const mainBox = document.getElementById('main-box');
+                mainBox.innerHTML = "";
+
+                for (let index = 0; index < data.results.length; index++) {
+                    const div = document.createElement("div");
+                    div.innerHTML = `
+                    <p>Name: <span>${data.results[index].name}</span></p>
+                    <p>Height: <span>${data.results[index].height}</span></p>
+                    <p>Mass: <span>${data.results[index].mass}</span></p>
+                    <p>Hair color: <span>${data.results[index].hair_color}</span></p>
+                    <p>Eye color: <span>${data.results[index].eye_color}</span></p>
+                    <p>Skin color: <span>${data.results[index].skin_color}</span></p>
+                    <p>Home World: <span>${data.results[index].homeworld}</span></p>
+                    <p>Films: <span>${data.results[index].films}</span></p>
+                    `;
+                    mainBox.appendChild(div);
+                }
             } else {
-                alert('Aún no hay datos');
+                let loading = document.createElement("p");
+                loading.innerText = 'Cargando...'
             };
             
         } catch (error) {

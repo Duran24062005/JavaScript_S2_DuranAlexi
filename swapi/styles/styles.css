@@ -32,6 +32,22 @@ input:focus {
 }
 
 .grid-box {
-    background-color: rgb(26, 23, 23);
+    background-color: rgb(63, 59, 59);
     border-radius: 2vh;
+    margin-top: 2rem;
+    padding: 5vw;
+    color: white;
+}
+
+div {
+    margin-bottom: 2rem;
+}
+
+p {
+    border-bottom: 1px solid gray;
+}
+
+span {
+    width: 90%;
+    color: darkblue;
 }
