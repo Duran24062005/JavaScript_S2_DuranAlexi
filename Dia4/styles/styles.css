@@ -18,8 +18,29 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-.personajes {
+#personajes {
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto auto auto;
+    gap: 2vw;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background-color: green;
+    color: white;
+    width: 10vw;
+    height: 5vh;
+    border: 1px solid black;
+    border-radius: 3vh;
+    margin: 4vh;
+}
+
+button:hover {
+    background-color: greenyellow;
+    color: black;
 }
