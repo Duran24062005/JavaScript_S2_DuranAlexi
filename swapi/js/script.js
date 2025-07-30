@@ -1,14 +1,14 @@
 
-function showPeoples() {
+function fetchData(callback) {
     const xhr = new XMLHttpRequest()
     const url = `https://swapi.py4e.com/api/people/`;
     xhr.open('GET', url, true);
     xhr.onreadystatechange = function () {
+        const mainBox = document.getElementById('main-box');
         try {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 const data = JSON.parse(xhr.responseText);
                 console.log(data.results);
-                const mainBox = document.getElementById('main-box');
                 mainBox.innerHTML = "";
 
                 for (let index = 0; index < data.results.length; index++) {
@@ -37,6 +37,11 @@ function showPeoples() {
     xhr.send();
 };
 
+function showPeoples() {
+    
+}
+
 window.addEventListener('load', function () {
+    fetchData();
     showPeoples();
 });

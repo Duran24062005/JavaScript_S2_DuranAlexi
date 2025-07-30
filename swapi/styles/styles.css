@@ -14,25 +14,27 @@ body {
 
 h1 {
     margin: 0 auto;
-    background: linear-gradient(black, gray);
+    background: linear-gradient(black, rgb(173, 167, 167));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 input {
+    margin: 0 auto;
+    margin-top: 1rem;
     border: 1px solid black;
     border-radius: 2vh;
     height: 2rem;
     padding-left: 2rem;
+    width: 50vw;
 }
 
 input:focus {
-    border: 1px solid gray;
-    border-color: aliceblue;
+    border-color: darkblue;
 }
 
 .grid-box {
-    background-color: rgb(63, 59, 59);
+    background-color: rgb(172, 165, 165);
     border-radius: 2vh;
     margin-top: 2rem;
     padding: 5vw;
@@ -44,10 +46,10 @@ div {
 }
 
 p {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(82, 79, 79);
 }
 
 span {
-    width: 90%;
-    color: darkblue;
+    width: 70%;
+    color: black;
 }

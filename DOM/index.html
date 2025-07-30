@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM - Tutorial</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .demo-box {
+            background: white;
+            border: 2px dashed #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            min-height: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-box.highlight {
+            border-color: #667eea;
+            background: #f0f4ff;
+            transform: scale(1.02);
+        }
+        
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .item {
+            background: #e2e8f0;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 20px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .item:hover {
+            background: #cbd5e0;
+            transform: scale(1.05);
+        }
+        
+        .item.selected {
+            background: #667eea;
+            color: white;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .success {
+            background: #48bb78;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .dynamic-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            margin: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+        
+        #counter {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Manipulación del DOM con JavaScript</h1>
+        
+        <!-- Sección 1: Seleccionar elementos -->
+        <div class="section">
+            <h2>1. Seleccionar Elementos</h2>
+            <p>Aprende a seleccionar elementos del DOM usando diferentes métodos:</p>
+            
+            <div class="code-example">
+// Métodos principales para seleccionar elementos:
+document.getElementById('miId')
+document.querySelector('.miClase')
+document.querySelectorAll('div')
+document.getElementsByClassName('miClase')
+            </div>
+            
+            <div class="demo-box" id="demo1">
+                <p>¡Soy una caja demo! Haz clic en los botones para verme cambiar.</p>
+            </div>
+            
+            <button onclick="resaltarCaja()">Resaltar Caja</button>
+            <button onclick="quitarResaltado()">Quitar Resaltado</button>
+        </div>
+        
+        <!-- Sección 2: Modificar contenido -->
+        <div class="section">
+            <h2>2. Modificar Contenido</h2>
+            <p>Cambia el texto y HTML de los elementos:</p>
+            
+            <div class="code-example">
+// Cambiar contenido de texto
+elemento.textContent = "Nuevo texto"
+elemento.innerHTML = "&lt;strong&gt;HTML&lt;/strong&gt;"
+            </div>
+            
+            <div class="demo-box" id="demo2">
+                <p id="texto-cambiante">Este texto puede cambiar</p>
+            </div>
+            
+            <input type="text" id="nuevo-texto" placeholder="Escribe nuevo texto aquí">
+            <button onclick="cambiarTexto()">Cambiar Texto</button>
+            <button onclick="cambiarHTML()">Cambiar a HTML</button>
+        </div>
+        
+        <!-- Sección 3: Modificar estilos -->
+        <div class="section">
+            <h2>3. Modificar Estilos</h2>
+            <p>Cambia la apariencia de los elementos dinámicamente:</p>
+            
+            <div class="code-example">
+// Cambiar estilos CSS
+elemento.style.color = "red"
+elemento.style.backgroundColor = "yellow"
+elemento.classList.add("nueva-clase")
+elemento.classList.remove("clase-vieja")
+            </div>
+            
+            <div class="demo-box" id="demo3" style="text-align: center;">
+                <p>¡Cambia mis colores!</p>
+            </div>
+            
+            <div>
+                <div class="color-box" style="background-color: #ff6b6b;" onclick="cambiarColor('#ff6b6b')"></div>
+                <div class="color-box" style="background-color: #4ecdc4;" onclick="cambiarColor('#4ecdc4')"></div>
+                <div class="color-box" style="background-color: #45b7d1;" onclick="cambiarColor('#45b7d1')"></div>
+                <div class="color-box" style="background-color: #f9ca24;" onclick="cambiarColor('#f9ca24')"></div>
+                <div class="color-box" style="background-color: #f0932b;" onclick="cambiarColor('#f0932b')"></div>
+                <div class="color-box" style="background-color: #eb4d4b;" onclick="cambiarColor('#eb4d4b')"></div>
+            </div>
+        </div>
+        
+        <!-- Sección 4: Crear y eliminar elementos -->
+        <div class="section">
+            <h2>4. Crear y Eliminar Elementos</h2>
+            <p>Añade y quita elementos del DOM dinámicamente:</p>
+            
+            <div class="code-example">
+// Crear elementos
+const nuevoDiv = document.createElement('div')
+nuevoDiv.textContent = 'Soy nuevo'
+padre.appendChild(nuevoDiv)
+
+// Eliminar elementos
+elemento.remove()
+            </div>
+            
+            <div class="demo-box" id="demo4">
+                <div class="dynamic-list" id="lista-items">
+                    <div class="item" onclick="eliminarItem(this)">Item 1 (click para eliminar)</div>
+                    <div class="item" onclick="eliminarItem(this)">Item 2 (click para eliminar)</div>
+                </div>
+            </div>
+            
+            <input type="text" id="nuevo-item" placeholder="Escribe nuevo item">
+            <button onclick="agregarItem()">Agregar Item</button>
+            <button onclick="limpiarLista()">Limpiar Todo</button>
+        </div>
+        
+        <!-- Sección 5: Eventos -->
+        <div class="section">
+            <h2>5. Manejo de Eventos</h2>
+            <p>Responde a las acciones del usuario:</p>
+            
+            <div class="code-example">
+// Agregar eventos
+elemento.addEventListener('click', function() {
+    console.log('¡Click!')
+})
+
+// Evento con parámetros
+elemento.onclick = () => miFuncion()
+            </div>
+            
+            <div class="demo-box" id="demo5" style="text-align: center;">
+                <div id="counter">0</div>
+                <button onclick="incrementar()">➕ Incrementar</button>
+                <button onclick="decrementar()">➖ Decrementar</button>
+                <button onclick="resetear()">🔄 Reset</button>
+            </div>
+        </div>
+        
+        <!-- Sección 6: Práctica interactiva -->
+        <div class="section">
+            <h2>6. ¡Práctica Todo Junto!</h2>
+            <p>Un ejemplo que combina todo lo aprendido:</p>
+            
+            <div class="demo-box" id="demo6">
+                <h3>Lista de Tareas Mini</h3>
+                <input type="text" id="nueva-tarea" placeholder="Escribe una tarea" onkeypress="if(event.key==='Enter') agregarTarea()">
+                <button onclick="agregarTarea()">Agregar Tarea</button>
+                <div id="lista-tareas" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        
+        <div class="success" id="mensaje-exito">
+            ¡Excelente! Has completado una acción exitosamente.
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let contador = 0;
+        let tareaId = 0;
+        
+        // Sección 1: Seleccionar elementos
+        function resaltarCaja() {
+            const caja = document.getElementById('demo1');
+            caja.classList.add('highlight');
+            mostrarExito();
+        }
+        
+        function quitarResaltado() {
+            const caja = document.getElementById('demo1');
+            caja.classList.remove('highlight');
+        }
+        
+        // Sección 2: Modificar contenido
+        function cambiarTexto() {
+            const elemento = document.getElementById('texto-cambiante');
+            const nuevoTexto = document.getElementById('nuevo-texto').value;
+            
+            if (nuevoTexto.trim()) {
+                elemento.textContent = nuevoTexto;
+                document.getElementById('nuevo-texto').value = '';
+                mostrarExito();
+            }
+        }
+        
+        function cambiarHTML() {
+            const elemento = document.getElementById('texto-cambiante');
+            elemento.innerHTML = '<strong style="color: #667eea;">¡Texto con HTML!</strong> <em>¡Funciona!</em>';
+            mostrarExito();
+        }
+        
+        // Sección 3: Modificar estilos
+        function cambiarColor(color) {
+            const caja = document.getElementById('demo3');
+            caja.style.backgroundColor = color;
+            caja.style.color = 'white';
+            caja.style.fontWeight = 'bold';
+            mostrarExito();
+        }
+        
+        // Sección 4: Crear y eliminar elementos
+        function agregarItem() {
+            const input = document.getElementById('nuevo-item');
+            const lista = document.getElementById('lista-items');
+            
+            if (input.value.trim()) {
+                const nuevoItem = document.createElement('div');
+                nuevoItem.className = 'item';
+                nuevoItem.textContent = input.value + ' (click para eliminar)';
+                nuevoItem.onclick = function() { eliminarItem(this); };
+                
+                lista.appendChild(nuevoItem);
+                input.value = '';
+                mostrarExito();
+            }
+        }
+        
+        function eliminarItem(elemento) {
+            elemento.remove();
+            mostrarExito();
+        }
+        
+        function limpiarLista() {
+            const lista = document.getElementById('lista-items');
+            lista.innerHTML = '';
+        }
+        
+        // Sección 5: Eventos y contador
+        function incrementar() {
+            contador++;
+            document.getElementById('counter').textContent = contador;
+            mostrarExito();
+        }
+        
+        function decrementar() {
+            contador--;
+            document.getElementById('counter').textContent = contador;
+            mostrarExito();
+        }
+        
+        function resetear() {
+            contador = 0;
+            document.getElementById('counter').textContent = contador;
+        }
+        
+        // Sección 6: Lista de tareas
+        function agregarTarea() {
+            const input = document.getElementById('nueva-tarea');
+            const lista = document.getElementById('lista-tareas');
+            
+            if (input.value.trim()) {
+                const tareaDiv = document.createElement('div');
+                tareaDiv.className = 'item';
+                tareaDiv.style.display = 'flex';
+                tareaDiv.style.justifyContent = 'space-between';
+                tareaDiv.style.alignItems = 'center';
+                tareaDiv.style.width = '100%';
+                tareaDiv.style.marginBottom = '10px';
+                
+                const textoTarea = document.createElement('span');
+                textoTarea.textContent = input.value;
+                
+                const botonEliminar = document.createElement('button');
+                botonEliminar.textContent = '❌';
+                botonEliminar.style.fontSize = '12px';
+                botonEliminar.style.padding = '5px 10px';
+                botonEliminar.onclick = function() {
+                    tareaDiv.remove();
+                };
+                
+                // Toggle completado
+                textoTarea.onclick = function() {
+                    if (textoTarea.style.textDecoration === 'line-through') {
+                        textoTarea.style.textDecoration = 'none';
+                        textoTarea.style.opacity = '1';
+                    } else {
+                        textoTarea.style.textDecoration = 'line-through';
+                        textoTarea.style.opacity = '0.6';
+                    }
+                };
+                
+                tareaDiv.appendChild(textoTarea);
+                tareaDiv.appendChild(botonEliminar);
+                lista.appendChild(tareaDiv);
+                
+                input.value = '';
+                mostrarExito();
+            }
+        }
+        
+        // Función para mostrar mensaje de éxito
+        function mostrarExito() {
+            const mensaje = document.getElementById('mensaje-exito');
+            mensaje.style.display = 'block';
+            setTimeout(() => {
+                mensaje.style.display = 'none';
+            }, 2000);
+        }
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado completamente. ¡Listo para manipular!');
+        });
+    </script>
+</body>
+</html>
