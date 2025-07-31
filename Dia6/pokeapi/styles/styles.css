@@ -19,7 +19,7 @@ body {
 }
 
 h1 {
-    font-size: 5vh;
+    font-size: 5vw;
     margin: 2vw;
     background: linear-gradient(rgb(10, 66, 221), rgb(228, 5, 42));
     -webkit-background-clip: text;
@@ -28,8 +28,7 @@ h1 {
 }
 
 .img {
-    width: 400px;
-    height: 800px;
+    width: 40vh;
 }
 
 .container {
@@ -37,17 +36,44 @@ h1 {
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin-top: -12rem;
+    margin-top: -17vh;
+}
+
+.pokemon {
+    text-align: center;
+    position: relative;
+    margin-top: -24vh;
+    margin-bottom: 5vh;
+}
+
+.pokemon-img {
+    width: 9vh;
+    margin-bottom: 1vh;
+}
+
+.pokemon-info {
+    font-size: 1.8vh;
+    display: flex;
+    justify-content: center;
+    text-align: end;
+    margin-top: 4vh;
+    margin-left: 3vh;
+}
+
+.poke-num {
+    color: gray;
 }
 
 input[type="text"] {
     margin: 0 auto;
-    margin-bottom: 0.4rem;
+    margin-bottom: 1.4rem;
     padding-left: 1rem;
-    width: 17rem;
-    height: 7vh;
+    width: 20vh;
+    height: 5vh;
     border: 1px solid black;
-    border-radius: 5rem;
+    border-radius: 1rem;
+    box-shadow: -6px 8px 0.7px;
+    font-size: 2vw;
 }
 
 .btns {
@@ -56,15 +82,30 @@ input[type="text"] {
 }
 
 button {
-    width: 9rem;
-    height: 2.5rem;
-    border: 1px solid beige;
-    border-radius: 1.5rem;
-    background-color: rgb(46, 48, 47);
+    width: 9vh;
+    height: 3vh;
+    border: 1px solid black;
+    border-radius: 0.8rem;
+    background-color: rgb(79, 81, 80);
+    box-shadow: -2px 6px 0.8px black;
     color: white;
+    font-size: 1.3vh;
     margin: 0.6rem;
 }
 
 button:hover {
-    background-color: black;
+    background-color: rgb(50, 49, 49);
+    animation: btnAnimation 1s;
+}
+
+@keyframes btnAnimation {
+    0% {
+        margin-top: -0.2vh;
+    }
+    50% {
+        margin-top: -0.4vh;
+    }
+    100% {
+        margin-top: -0.6vh;
+    }
 }
