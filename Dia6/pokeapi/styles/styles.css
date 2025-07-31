@@ -25,3 +25,39 @@ h1 {
     -webkit-text-fill-color: transparent;
     text-shadow: 5px 21px 15px;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input[type="text"] {
+    margin: 0 auto;
+    margin-bottom: 0.4rem;
+    padding-left: 1rem;
+    width: 40vw;
+    height: 5vh;
+    border: 1px solid black;
+    border-radius: 1rem;
+
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 9rem;
+    height: 2.5rem;
+    border: 1px solid beige;
+    border-radius: 1.5rem;
+    background-color: rgb(46, 48, 47);
+    color: white;
+    margin: 0.6rem;
+}
+
+button:hover {
+    background-color: black;
+}
