@@ -43,12 +43,13 @@ h1 {
     text-align: center;
     position: relative;
     margin-top: -24vh;
-    margin-bottom: 5vh;
+    margin-bottom: 4vh;
 }
 
 .pokemon-img {
-    width: 9vh;
-    margin-bottom: 1vh;
+    width: 11vh;
+    margin-top: -1.3vh;
+    margin-right: 2.5vh;
 }
 
 .pokemon-info {
@@ -66,12 +67,12 @@ h1 {
 
 input[type="text"] {
     margin: 0 auto;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1rem;
     padding-left: 1rem;
     width: 20vh;
     height: 5vh;
     border: 1px solid black;
-    border-radius: 1rem;
+    border-radius: 1vh;
     box-shadow: -6px 8px 0.7px;
     font-size: 2vw;
 }
@@ -85,7 +86,7 @@ button {
     width: 9vh;
     height: 3vh;
     border: 1px solid black;
-    border-radius: 0.8rem;
+    border-radius: 0.8vh;
     background-color: rgb(79, 81, 80);
     box-shadow: -2px 6px 0.8px black;
     color: white;
@@ -100,12 +101,12 @@ button:hover {
 
 @keyframes btnAnimation {
     0% {
-        margin-top: -0.2vh;
+        top: -0.2vh;
     }
     50% {
-        margin-top: -0.4vh;
+        top: -0.4vh;
     }
     100% {
-        margin-top: -0.6vh;
+        top: -0.6vh;
     }
 }
