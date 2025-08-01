@@ -10,17 +10,16 @@
     <h1>PokeApi</h1>
     <div class="img-container">
         <img src="./media/pokedex (1).png" alt="" class="img">
+    </div>
+    <div class="info-container">
+        <div class="poke-pokemon" id="pokemonInfo">
+            
+        </div>
+    
         <div class="container">
-            <div class="pokemon">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/300.gif" alt="" class="pokemon-img">
-                <div class="pokemon-info">
-                    <h2 class="poke-num">num -</h2>
-                    <h2 class="poke-name"> name</h2>
-                </div>
-            </div>
             <input type="text" id="searchPokemon" placeholder="Name or Number">
             <div class="btns">
-                <button class="prev"> < Prev</button><button class="next">Next > </button>
+                <button onclick="Back()" class="prev"> < Prev</button><button onclick="Next()" class="next">Next > </button>
             </div>
         </div>
     </div>
