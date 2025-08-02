@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack - Juego de Cartas</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🃏 BLACKJACK 🃏</h1>
+            <div class="score-board">
+                <div class="score">
+                    <span>Victorias: </span>
+                    <span id="wins">0</span>
+                </div>
+                <div class="score">
+                    <span>Derrotas: </span>
+                    <span id="losses">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-board">
+            <!-- Área de la Casa -->
+            <section class="dealer-area">
+                <h2>🏠 Casa</h2>
+                <div class="hand" id="dealer-hand">
+                    <!-- Las cartas de la casa aparecerán aquí -->
+                </div>
+                <div class="hand-value">
+                    <span>Puntos: </span>
+                    <span id="dealer-score">0</span>
+                </div>
+            </section>
+
+            <!-- Área del Jugador -->
+            <section class="player-area">
+                <h2>👤 Jugador</h2>
+                <div class="hand" id="player-hand">
+                    <!-- Las cartas del jugador aparecerán aquí -->
+                </div>
+                <div class="hand-value">
+                    <span>Puntos: </span>
+                    <span id="player-score">0</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Controles del juego -->
+        <div class="game-controls">
+            <button id="new-game-btn" class="btn btn-primary">Nuevo Juego</button>
+            <button id="hit-btn" class="btn btn-secondary" disabled>Pedir Carta</button>
+            <button id="stand-btn" class="btn btn-secondary" disabled>Plantarse</button>
+        </div>
+
+        <!-- Mensajes del juego -->
+        <div id="game-message" class="game-message"></div>
+
+        <!-- Loading indicator -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Barajando cartas...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
