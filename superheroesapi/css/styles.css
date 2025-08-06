@@ -2,4 +2,6 @@ body {
     background: url(https://64.media.tumblr.com/05718a45cc7bc3acf292f84097e33f0c/tumblr_msi674OvQx1sc28gvo1_500.gif) no-repeat;
     background-position: center;
     background-size: cover;
+    height: 100vh;
+    width: 100vw;
 }
