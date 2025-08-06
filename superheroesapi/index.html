@@ -12,37 +12,14 @@
     <main class="container gap-3">
         <h1 class="text-primary text-center my-5">Super Heroes Api V1 Alexi Dg</h1>
         <div class="container text-center">
-            <div class="row gap-1">
+            <div class="row gap-2">
                 <input type="text" placeholder="Name of Super Hero" id="inputName" class="form-control col">
-                <input type="submit" value="Search" class="btn btn-primary col-2">
+                <button onclick="searchSuperHeroes()" class="btn btn-primary col-2">Search</button>
             </div>
         </div>
         <div class="container text-center my-5">
-            <div class="row gap-3">
-                <div class="card col" style="width: 18rem;">
-                    <img src="https://www.superherodb.com/pictures2/portraits/10/100/10255.jpg" class="card-img-top" alt="gent Bob">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card col" style="width: 18rem;">
-                    <img src="https://www.superherodb.com/pictures2/portraits/10/100/10255.jpg" class="card-img-top" alt="gent Bob">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card col" style="width: 18rem;">
-                    <img src="https://www.superherodb.com/pictures2/portraits/10/100/10255.jpg" class="card-img-top" alt="gent Bob">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+            <div class="row gap-3" id="containerHeroes">
+                
             </div>
         </div>
     </main>
