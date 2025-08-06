@@ -13,15 +13,18 @@
         <h1 class="text-primary text-center m-4">TODO's</h1>
         <section class="container text-center">
             <div class="row gap-2">
-                <input type="text" placeholder="Buscar ToDo" class="form-control col">
+                <input id="inputSearch" type="text" placeholder="Buscar ToDo" class="form-control col">
                 <button class="btn btn-primary col-2">Buscar</button>
             </div>
-            <article class="container center my-5">
+            <article id="cardContainer" class="container center my-5">
                 <div class="card w-80 mb-3">
                     <div class="card-body container">
                         <div class="row gap-3">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text col">With supporting text below as a natural lead-in to additional content.</p>
+                            <div class="col">
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text"><strong>Categoria:</strong></p>
+                            </div>
                             <div class="col text-center mb-4">
                                 <button onclick="deleteItem(2)" class="btn btn-danger">eliminar</button>
                                 <button onclick="update(3)" class="btn btn-warning">actualizar</button>
