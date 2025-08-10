@@ -39,7 +39,7 @@ function normalizeText(text) {
 
 function searchTodo() {
     const input = document.getElementById('inputSearch').value;
-    let data = db.filter(e => normalizeText(e.name) == input.trim().toLowerCase() );
+    let data = db.filter(e => normalizeText(e.name) == input.trim().toLowerCase());
     console.log(data)
     cardContainer.innerHTML = "";
     data.forEach((e) => {
@@ -60,13 +60,36 @@ function searchTodo() {
                         </div>
                     </div>
                 </div>
-            </div>`
-            ;
+            </div>
+        `;
     });
 }
 
 
+function createToDo(name, message, category, items) {
+    let newToDo = {
+        "id": 1,
+        "name": name,
+        "message": message,
+        "category": category,
+        "items": ["esponja", "jabón para platos", "guantes"]
+    }
+
+    let successfully = db.push(newToDo);
+    if (successfully) {
+        alert(`ToDo ${name} creado correctamente.`);
+    } else {
+        alert(`ToDo ${name} no fue creado correctamente.`);
+    }
+}
+
+
 function deleteItem(id) {
+    let elemento = db.filter((e) => {
+        e.id === parseInt(id)
+    })
+
+    console.log(elemento);
     alert(`Item ${id} deleted successfully`);
 };
 
@@ -80,7 +103,26 @@ function finish(id) {
 };
 
 
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita recargar la página
+
+    const data = {
+        id: document.getElementById("id").value,
+        name: document.getElementById("name").value,
+        message: document.getElementById("message").value,
+        category: document.getElementById("category").value,
+        items: document.getElementById("items").value.split(",").map(item => item.trim())
+    };
+
+    console.log(data);
+});
+
+
+
+
 window.searchTodo = searchTodo;
+window.createToDo = createToDo;
 window.deleteItem = deleteItem;
 window.update = update;
 window.finish = finish;

@@ -15,13 +15,63 @@
             <div class="row gap-2">
                 <input id="inputSearch" type="text" placeholder="Buscar ToDo" class="form-control col">
                 <button onclick="searchTodo()" class="btn btn-primary col-2">Buscar</button>
-                <button onclick="" class="btn btn-success col-2">Nuevo</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success col-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Nuevo
+                </button>
             </div>
             <article id="cardContainer" class="container center my-5">
                 
             </article>
         </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Create new ToDO</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" class="container">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">ID</label>
+                        <input type="number" class="form-control" id="id" name="id">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Categoría</label>
+                        <input type="text" class="form-control" id="category" name="category">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="items" class="form-label">Items</label>
+                        <input type="text" class="form-control" id="items" name="items" placeholder="Separar con comas">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button  onclick="createToDo()" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+        </div>
     </main>
 </body>
 <script type="module" src="./script/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </html>
