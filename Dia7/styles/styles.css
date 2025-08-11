@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "titulo";
+    src: url(../storage/font/WorkSans-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, rgb(79, 85, 93), rgb(39, 51, 63));
+}
+
+.todito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30vh;
+    width: 100%;
+}
+
+h1 {
+    margin-top: 130px;
+    margin-bottom: ;
+    font-family: "titulo", sans-serif;
+    color: white;
+    font-size: 100px;
+}
