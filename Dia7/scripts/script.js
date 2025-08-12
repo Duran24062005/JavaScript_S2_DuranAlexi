@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const datosContenedor = document.querySelector('.opciones');
     const taskinput = document.getElementById("taskInput");
     const addTaskButton = document.getElementById("addTaskButton");
+    const checkBtn = document.getElementById('check');
+    const deleteBtn = document.getElementById('delete');
 
     async function fetchData() {
         const response = await fetch('https://689a1741fed141b96ba1d686.mockapi.io/tasks');
@@ -30,6 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
         taskinput.value = '';
         const data = await fetchData();
         displayCapsula(data);
+    }
+
+    function checkTask() {
+        alert('Hola broooooo..................')
+    }
+
+    function deleteTask() {
+        alert('Hola broooooo..................')
     }
 
     function displayCapsula(capsula) {
@@ -76,4 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
     }
     addTaskButton.addEventListener('click', addNewTask);
+    checkBtn.addEventListener('click', checkTask);
+    deleteBtn.addEventListener('click', deleteTask);
 })
