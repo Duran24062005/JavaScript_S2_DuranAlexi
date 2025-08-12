@@ -2,7 +2,7 @@ import db from "./db/todo_db.js";
 const cardContainer = document.getElementById('cardContainer');
 
 function init() {
-    if (db != 1) {
+    if (db.length >= 1) {
         cardContainer.innerHTML = "";
         db.forEach((e) => {
             cardContainer.innerHTML += `
