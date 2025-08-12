@@ -81,10 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchData().then(data => {
         displayCapsula(data);
     })
-
-    function filterTask(params) {
-        
-    }
+    
     addTaskButton.addEventListener('click', addNewTask);
     checkBtn.addEventListener('click', checkTask);
     deleteBtn.addEventListener('click', deleteTask);
