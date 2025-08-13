@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let data = await response.json();
         return data;
     }
+
+    async function fetchDataById(id) {
+        const response = await fetch(`https://689a1741fed141b96ba1d686.mockapi.io/tasks/${id}`);
+        let data = await response.json();
+        return data;
+    }
     
     // console.log(fetchData());
 
@@ -18,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ##################
     async function addNewTask() {
         const task = taskinput.value;
+        
         console.log(task);
         if (task.trim() === '') return;
         await fetch('https://689a1741fed141b96ba1d686.mockapi.io/tasks', {
@@ -26,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              task,status: 'hold on'  
+              task,status: 'hold on'
             })
         });
         taskinput.value = '';
@@ -36,13 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function checkTask(id) {
         try {
+            const element = await fetchDataById(id);
+            console.log(element);
+            
+            let newSatus;
+            if (element.status === "ready") {
+                newSatus = "hold on";
+            } else {
+                newSatus = "ready";
+            }
             await fetch(`https://689a1741fed141b96ba1d686.mockapi.io/tasks/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json"
                 }, 
                 body: JSON.stringify({
-                    status: 'ready'
+                    status: newSatus
                 })
             });
             const data = await fetchData();
