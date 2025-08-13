@@ -136,9 +136,10 @@ function update(id) {
 function finish() {
     let id = event.target.getAttribute('data-id');
     let element = db.filter(e => e.id == id)[0];
-    element.status = 'ready';
-    console.log(element.status);
-    console.log(db);
+    let status = element.status === 'on hold' ? 'ready' : 'on hold'
+    element.status = status;
+    // console.log(element.status);
+    // console.log(db);
     
     // alert(`Item ${id} finished successfully`);
     init(db)
