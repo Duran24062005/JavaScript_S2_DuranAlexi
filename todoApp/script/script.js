@@ -39,7 +39,7 @@ function normalizeText(text) {
 
 function searchTodo() {
     const input = document.getElementById('inputSearch').value;
-    let data = db.filter(e => normalizeText(e.name) == input.trim().toLowerCase());
+    let data = db.filter(e => normalizeText(e.name) == normalizeText(input));
     console.log(data)
     cardContainer.innerHTML = "";
     data.forEach((e) => {
@@ -67,8 +67,15 @@ function searchTodo() {
 
 
 function createToDo(name, message, category, items) {
+    let id;
+    if (db.length >= 1) {
+        id = db[db.length - 1];
+    } else {
+        id = 1;
+    }
+
     let newToDo = {
-        "id": 1,
+        "id": id,
         "name": name,
         "message": message,
         "category": category,

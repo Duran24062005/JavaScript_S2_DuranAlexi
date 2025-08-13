@@ -34,8 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCapsula(data);
     }
 
-    function checkTask() {
-        alert('Hola broooooo..................')
+    async function checkTask(id) {
+        try {
+            await fetch(`https://689a1741fed141b96ba1d686.mockapi.io/tasks/${id}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                }, 
+                body: JSON.stringify({
+                    status: 'ready'
+                })
+            });
+            const data = await fetchData();
+            displayCapsula(data);
+
+        } catch (error) {
+            console.log(`Fatal new error: ${error}`);
+            
+        }
     }
 
     function deleteTask() {
@@ -83,6 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     addTaskButton.addEventListener('click', addNewTask);
-    checkBtn.addEventListener('click', checkTask);
-    deleteBtn.addEventListener('click', deleteTask);
-})
+    datosContenedor.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG') {
+            const id = e.target.getAttribute('data-id');
+            
+            // Verificar si es el botón de check
+            if (e.target.closest('.terminado') || e.target.closest('.terminadoNegativo')) {
+                checkTask(id);
+            }
+
+            // Verificar si es el botón de delete
+            if (e.target.closest('.eliminado') || e.target.closest('.eliminadoNegativo')) {
+                deleteTask(id);
+            }
+        }
+    });
+
+});
