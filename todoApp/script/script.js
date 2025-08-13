@@ -5,6 +5,7 @@ function init(dB) {
     if (dB.length >= 1) {
         cardContainer.innerHTML = "";
         dB.forEach((e) => {
+            if (e.status == 'on hold') {
             cardContainer.innerHTML += `
             <div class="card w-80 mb-3">
                 <div class="card-body container">
@@ -16,14 +17,36 @@ function init(dB) {
                             <p class="card-text"><strong>Items:</strong> ${e.items.join(", ")}</p>
                         </div>
                         <div class="col text-center mb-4">
-                            <button onclick="deleteItem(${e.id})" class="btn btn-danger">eliminar</button>
-                            <button onclick="update(${e.id})" class="btn btn-warning">actualizar</button>
-                            <button onclick="finish(${e.id})" class="btn btn-info">Tachar</button>
+                            <button data-id="${e.id}" onclick="deleteItem(${e.id})" class="btn btn-danger">Delete</button>
+                            <button data-id="${e.id}" onclick="update(${e.id})" class="btn btn-warning">Update</button>
+                            <button data-id="${e.id}" onclick="finish(${e.id})" class="btn btn-info">Check</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            `;
+            </div>`;
+                
+            } else {
+                cardContainer.innerHTML += `
+                <div class="card w-80 mb-3">
+                    <div class="card-body container">
+                        <div class="row gap-3">
+                            <h5 class="card-title text-decoration-line-through">${e.name}</h5>
+                            <div class="col">
+                                <p class="card-text text-decoration-line-through"><strong>Mensaje</strong> ${e.message}</p>
+                                <p class="card-text text-decoration-line-through"><strong>Categoria:</strong> ${e.category}</p>
+                                <p class="card-text text-decoration-line-through"><strong>Items:</strong> ${e.items.join(", ")}</p>
+                            </div>
+                            <div class="col text-center mb-4">
+                                <button data-id="${e.id}" onclick="deleteItem(${e.id})" class="btn btn-danger text-decoration-line-through">Delete</button>
+                                <button data-id="${e.id}" onclick="update(${e.id})" class="btn btn-warning text-decoration-line-through">Update</button>
+                                <button data-id="${e.id}" onclick="finish(${e.id})" class="btn btn-info text-decoration-line-through">Uncheck</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+
+            }
         } );
     } else {
         cardContainer.innerHTML = '<p class="text-danger">No hay datos...</p>';
@@ -54,9 +77,9 @@ function searchTodo() {
                             <p class="card-text"><strong>Items:</strong> ${e.items.join(", ")}</p>
                         </div>
                         <div class="col text-center mb-4">
-                            <button onclick="deleteItem(${e.id})" class="btn btn-danger">eliminar</button>
-                            <button onclick="update(${e.id})" class="btn btn-warning">actualizar</button>
-                            <button onclick="finish(${e.id})" class="btn btn-info">Tachar</button>
+                            <button data-id="${e.id}" onclick="deleteItem(${e.id})" class="btn btn-danger">eliminar</button>
+                            <button data-id="${e.id}" onclick="update(${e.id})" class="btn btn-warning">actualizar</button>
+                            <button data-id="${e.id}" onclick="finish(${e.id})" class="btn btn-info">Tachar</button>
                         </div>
                     </div>
                 </div>
@@ -95,13 +118,13 @@ function createToDo(name, message, category, items) {
 
 
 function deleteItem(id) {
-    let elemento = db.filter((e) => e.id === parseInt(id));
+    let elemento = db.findIndex((e) => e.id === parseInt(id));
 
     // alert(`Item ${id} deleted successfully`);
-    console.log(db);
-    console.log(elemento);
-    db.splice(elemento[0].id, 1);
-    console.log(db);
+    // console.log(db);
+    // console.log('Elemento: '+ elemento);
+    db.splice(elemento, 1);
+    // console.log(db);
     init(db);
 };
 
@@ -110,8 +133,13 @@ function update(id) {
     alert(`Item ${id} updated successfully`);
 };
 
-function finish(id) {
+function finish() {
+    let id = event.target.getAttribute('data-id');
+    let element = db.filter(e => e.id == id);
+    element.status = 'ready';
+    console.log(element.status);
     alert(`Item ${id} finished successfully`);
+    init(db)
 };
 
 
