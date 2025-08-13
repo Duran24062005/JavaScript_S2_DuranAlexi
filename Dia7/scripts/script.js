@@ -70,8 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function deleteTask() {
-        alert('Hola broooooo..................')
+    async function deleteTask(id) {
+        try {
+            await fetch(`https://689a1741fed141b96ba1d686.mockapi.io/tasks/${id}`, {
+                method: 'DELETE'
+            });
+            const data = await fetchData();
+            displayCapsula(data);
+        } catch (error) {
+           console.log(`Fatal new error: ${error}`);
+            
+        }
     }
 
     function displayCapsula(capsula) {
