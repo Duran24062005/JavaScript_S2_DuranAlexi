@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const datosContenedor = document.querySelector('.opciones');
     const taskinput = document.getElementById("taskInput");
     const addTaskButton = document.getElementById("addTaskButton");
-    const checkBtn = document.getElementById('check');
-    const deleteBtn = document.getElementById('delete');
 
     async function fetchData() {
         const response = await fetch('https://689a1741fed141b96ba1d686.mockapi.io/tasks');
