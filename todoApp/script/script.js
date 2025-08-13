@@ -135,10 +135,12 @@ function update(id) {
 
 function finish() {
     let id = event.target.getAttribute('data-id');
-    let element = db.filter(e => e.id == id);
+    let element = db.filter(e => e.id == id)[0];
     element.status = 'ready';
     console.log(element.status);
-    alert(`Item ${id} finished successfully`);
+    console.log(db);
+    
+    // alert(`Item ${id} finished successfully`);
     init(db)
 };
 
