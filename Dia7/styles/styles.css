@@ -62,7 +62,7 @@ button {
     flex-direction: column;
     margin-top: 8rem;
     align-items: center;
-
+    padding-bottom: 4rem;
 }
 
 .capsula {
