@@ -1,10 +1,10 @@
 import db from "./db/todo_db.js";
 const cardContainer = document.getElementById('cardContainer');
 
-function init() {
-    if (db.length >= 1) {
+function init(dB) {
+    if (dB.length >= 1) {
         cardContainer.innerHTML = "";
-        db.forEach((e) => {
+        dB.forEach((e) => {
             cardContainer.innerHTML += `
             <div class="card w-80 mb-3">
                 <div class="card-body container">
@@ -79,11 +79,14 @@ function createToDo(name, message, category, items) {
         "name": name,
         "message": message,
         "category": category,
-        "items": ["esponja", "jabón para platos", "guantes"]
+        "items": []
     }
+
+    newToDo.items.push(items);
 
     let successfully = db.push(newToDo);
     if (successfully) {
+        init();
         alert(`ToDo ${name} creado correctamente.`);
     } else {
         alert(`ToDo ${name} no fue creado correctamente.`);
@@ -92,12 +95,14 @@ function createToDo(name, message, category, items) {
 
 
 function deleteItem(id) {
-    let elemento = db.filter((e) => {
-        e.id === parseInt(id)
-    })
+    let elemento = db.filter((e) => e.id === parseInt(id));
 
+    // alert(`Item ${id} deleted successfully`);
+    console.log(db);
     console.log(elemento);
-    alert(`Item ${id} deleted successfully`);
+    db.splice(elemento[0].id, 1);
+    console.log(db);
+    init(db);
 };
 
 function update(id) {
@@ -123,6 +128,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     };
 
     console.log(data);
+    createToDo(dataname, data.message, data.category, data.items);
 });
 
 
@@ -135,5 +141,5 @@ window.update = update;
 window.finish = finish;
 
 window.addEventListener('load', function () {
-    init()
+    init(db);
 });
