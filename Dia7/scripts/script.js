@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>${cap.task}</p>
                 </div>
                 <div class="terminadoNegativo">
-                    <img src="./storage/img/pngwing.com (2).png" alt="check img" data-id="${cap.id}"></img>
+                    <img src="./storage/img/x_failed.png" alt="check img" data-id="${cap.id}"></img>
                 </div>
                 <div class="eliminadoNegativo">
                     <img src="./storage/img/pngwing.com (4).png" alt="delete img" data-id="${cap.id}"></img>
