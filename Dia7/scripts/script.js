@@ -44,12 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const element = await fetchDataById(id);
             console.log(element);
             
-            let newSatus;
-            if (element.status === "ready") {
-                newSatus = "hold on";
-            } else {
-                newSatus = "ready";
-            }
+            // Ternary operator
+            let newSatus = element.status === "ready" ? "hold on" : "ready";
+
             await fetch(`https://689a1741fed141b96ba1d686.mockapi.io/tasks/${id}`, {
                 method: 'PUT',
                 headers: {
@@ -87,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const capDiv = document.createElement('div');
             if (cap.status === "ready") {
                 capDiv.classList.add('capsulaNegativo');
-                capDiv.innerHTML = `
+                capDiv.innerHTML += `
                 <div class="infoTextNegativo">
                     <p>${cap.task}</p>
                 </div>
@@ -101,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datosContenedor.appendChild(capDiv);
             } else {
                 capDiv.classList.add('capsula');
-                capDiv.innerHTML = `
+                capDiv.innerHTML += `
                 <div class="infoText">
                     <p>${cap.task}</p>
                 </div>
