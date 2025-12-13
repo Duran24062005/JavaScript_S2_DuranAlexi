@@ -11,7 +11,7 @@ from db.test_data import test_db
 from functions.crud_persistent import *
 from functions.auxfunctions import */
 
-export function add_new_cost(category, description, monto) { 
+export function add_new_cost(category, description, monto) {
     /*
         Esta función se encarga de aislar la logica de creación de un nuevo gasto, llamando las funciones para guardar en la base de datos
         Recibe tres parametros: categoria, descripción y monto
@@ -30,49 +30,49 @@ export function add_new_cost(category, description, monto) {
 
     let new_list_costs = db_prueba.push(gasto);
 
-    if (new_list_costs){ 
+    if (new_list_costs) {
         return true;
-    } else { 
+    } else {
         return false;
     };
 };
 
-export function list_costs() { 
+export function list_costs() {
     /*
         Esta función se encarga de enviar la lista de todos los costos.
         No recibe parametros.
         Retorna una lista de costos que hay en la base de satos, en caso no haber, retorna falso.
     */
-    if (db_prueba){ 
+    if (db_prueba) {
         return db_prueba;
     } else {
         return false
     }
 }
 
-export function filter_by_category(category){
+export function filter_by_category(category) {
     /*
     Esta función fltra por categoria.
     Recibe el nombre de la categoria como argumento de tipo string.
      Retorna una lista de los elementos que pertenecen a esa categoria
     */
     let categorys = [];
-    for (let i = 0; i < db_prueba.length; i++){ 
+    for (let i = 0; i < db_prueba.length; i++) {
         if (db_prueba[i] && db_prueba[i].categoria) {
-            if (category === db_prueba[i].categoria.toLocaleLowerCase()){
+            if (category === db_prueba[i].categoria.toLocaleLowerCase()) {
                 categorys.push(db_prueba[i]);
             };
         };
     };
 
-    if (categorys.length > 0) { 
+    if (categorys.length > 0) {
         return categorys;
-    } else { 
+    } else {
         return false;
     };
 };
 
-export function filter_by_range_date(por, _from, to,) { 
+export function filter_by_range_date(por, _from, to,) {
     /*
     Esta función está diseñada para filtrar por año, meses y dias.
     Recibe 3 parametros: 
@@ -89,17 +89,17 @@ export function filter_by_range_date(por, _from, to,) {
         let hasta = datetime.strptime(to, '%Y-%m-%d').year
 
         let dato = db_prueba;
-        
+
         for (let index = 0; index < db_prueba.length; index++) {
             let anio = datetime.strptime(datos[i]['fecha'], '%Y-%m-%d').year
-            if (desde <= anio <= hasta) { 
+            if (desde <= anio <= hasta) {
                 rngs.append(datos[i]);
             }
         };
 
         if (rngs) {
-            return rngs ;
-        } else { 
+            return rngs;
+        } else {
             return false;
         }
 
@@ -110,35 +110,35 @@ export function filter_by_range_date(por, _from, to,) {
 
         for (let index = 0; index < db_prueba.length; index++) {
             month = datetime.strptime(datos[i]['fecha'], '%Y-%m-%d').month
-            if (desde <= month <= hasta) { 
+            if (desde <= month <= hasta) {
                 rngs.append(datos[i]);
             };
         };
 
-        if (rngs) { 
+        if (rngs) {
             return rngs;
-        } else { 
+        } else {
             return false;
         }
 
-    } else if (por == 3) { 
+    } else if (por == 3) {
         // Filtar por rango de dias
         desde = datetime.strptime(_from, '%Y-%m-%d').day
         hasta = datetime.strptime(to, '%Y-%m-%d').day
-        for (let index = 0; index < db_prueba.length; index++) { 
+        for (let index = 0; index < db_prueba.length; index++) {
             day = datetime.strptime(datos[i]['fecha'], '%Y-%m-%d').day
-            if (desde <= day <= hasta){ 
+            if (desde <= day <= hasta) {
                 rngs.push(datos[i]);
             }
         }
-        if (rngs) { 
-            return rngs  
-        } else { 
+        if (rngs) {
+            return rngs
+        } else {
             return False;
         }
     }
 };
-    
+
 /*
 def total_cost(opt, today):
     """
@@ -248,7 +248,7 @@ def cost_report(opts):
     # Armar informe
     informe = f"{titulo}\n\n{tabla}\n\nTOTAL GASTADO: ${total:.2f}\n"
     return informe
-  
+
 */
 
 // Desarrollado por Alexi Durán Gómez : C.C-1.067.031.983
